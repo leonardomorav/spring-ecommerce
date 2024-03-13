@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name="productos")
 public class Producto {
@@ -21,7 +22,7 @@ public class Producto {
     
     @ManyToOne
     private  Usuario usuario;
-
+    
     public Producto(Integer id, String nombre, String descripcion, String imagen, double precio, int cantidad) {
         this.id = id;
         this.nombre = nombre;
