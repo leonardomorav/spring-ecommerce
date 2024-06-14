@@ -1,7 +1,9 @@
 
 package com.portafolio.controller;
 
+import com.portafolio.model.Producto;
 import com.portafolio.service.ProductoService;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +30,17 @@ public class HomeController {
     }
     
    @GetMapping("productohome/{id}") 
-    public String productoHome(@PathVariable Integer id){
+    public String productoHome(@PathVariable Integer id, Model model){
         log.info("Id  producto Enviado como parametro{}",id);
+        Producto producto= new Producto();
+        Optional<Producto> productoOptional= productoService.get(id);   
+        producto=productoOptional.get();
+        
+        
+        model.addAttribute("producto", producto);
         
     return "usuario/productohome";
     }
+    
+    
 }
