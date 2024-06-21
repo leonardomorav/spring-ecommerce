@@ -4,6 +4,8 @@ package com.portafolio.controller;
 import com.portafolio.model.DetalleOrden;
 import com.portafolio.model.Orden;
 import com.portafolio.model.Producto;
+import com.portafolio.model.Usuario;
+import com.portafolio.service.IUsuarioService;
 import com.portafolio.service.ProductoService;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,10 @@ public class HomeController {
     private final Logger log=LoggerFactory.getLogger(HomeController.class);
     @Autowired
     private ProductoService productoService;
+  
+    
+    @Autowired
+    private IUsuarioService usuarioService;
     //para almacenar los detalles de la orden
     List<DetalleOrden> detalles= new ArrayList<DetalleOrden>();
     
@@ -126,9 +132,15 @@ public class HomeController {
     
     
     @GetMapping("/order")
-    public String order(){
-    
-    return "usuario/resumenorden";
+    public String order(Model model){
+        
+        Usuario usuario= usuarioService.findById(1).get();
+        
+        model.addAttribute("cart",detalles);
+        model.addAttribute("orden",orden);  
+        model.addAttribute("usuario",usuario);
+        
+    return "/usuario/resumenorden";
     
     
     }
