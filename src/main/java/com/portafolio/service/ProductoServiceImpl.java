@@ -2,18 +2,18 @@
 package com.portafolio.service;
 
 import com.portafolio.model.Producto;
-import com.portafolio.repository.ProductoRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.portafolio.repository.IProductoRepository;
 
 
 @Service
 public class ProductoServiceImpl implements ProductoService{
 
     @Autowired
-    private ProductoRepository productoRepository;
+    private IProductoRepository productoRepository;
     
     
     @Override
