@@ -4,10 +4,14 @@
  */
 package com.portafolio.service;
 
+import com.portafolio.model.DetalleOrden;
+
 /**
  *
  * @author pc
  */
 public interface IDetalleOrdenService {
+    
+    DetalleOrden save(DetalleOrden detalleOrden);
     
 }
